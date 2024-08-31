@@ -1,0 +1,23 @@
+
+
+body {
+    padding-top: 50px; /* Adjust based on the height of your header */
+  }
+  
+  /* Center the SignUp card in the viewport */
+  .signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Full viewport height minus header height */
+  }
+  
+  /* Style the SignUp card */
+  .signup-card {
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
