@@ -125,7 +125,8 @@ const BlogInfo = () => {
               top
               src={getBlogs?.image}
               alt="Blog Image"
-              style={{ height: '400px', objectFit: 'Cover' }}
+              style={{ height: 'auto', objectFit: 'Cover', maxHeight: '530px' }}
+              className='img-fluid'
             />
           <Card.Body>
             <Card.Title>{getBlogs?.title}</Card.Title>

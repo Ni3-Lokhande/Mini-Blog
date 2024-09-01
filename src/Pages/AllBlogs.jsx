@@ -1,5 +1,7 @@
+
+
 import React, { useContext } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import "./AllBlogs.css";
 import MyContext from "../context/data/MyContext";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +12,9 @@ const AllBlogs = () => {
   const navigate = useNavigate();
 
 
-  const cleanContent = (htmlContent) => {
-    return htmlContent.replace(/<\/?[^>]+(>|$)/g, ""); // Removes all HTML tags
-  };
+  // const cleanContent = (htmlContent) => {
+  //   return htmlContent.replace(/<\/?[^>]+(>|$)/g, ""); // Removes all HTML tags
+  // };
 
 
   const formatDate = (timestamp) => {
@@ -30,27 +32,26 @@ const AllBlogs = () => {
   return (
     <div className="container mt-5">
       <h1 className="mb-4 text-center">All Blogs</h1>
-      <div className="d-flex justify-content-between flex-wrap">
+      <Row>
         {getAllBlog.length > 0 ? (
-          <>
-            {getAllBlog.map((item, index) => {
-              const {image, createdAt, id, title, content } = item;
-              return (
+          getAllBlog.map((item, index) => {
+            const { image, createdAt, id, title } = item;
+            return (
+              <Col key={index} xs={12} sm={6} md={4} className="mb-4">
                 <Card
-                  className="mb-4 shadow-sm blog-card"
-                  style={{ width: "32%" }}
-                  key={index}
+                  className="shadow-sm blog-card"
+                  onClick={() => navigate(`/bloginfo/${id}`)}
                 >
                   <Card.Img
                     variant="top"
                     src={image}
                     alt="Blog Post Image"
-                    onClick={() => navigate(`/bloginfo/${id}`)}
+                    style={{ height: "200px", objectFit: "cover" }} // Ensures consistent image display
                   />
                   <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Text>
-                     {/* {cleanContent(content)} */}
+                      {/* {cleanContent(content)} */}
                     </Card.Text>
                   </Card.Body>
                   <Card.Footer>
@@ -59,15 +60,13 @@ const AllBlogs = () => {
                     </small>
                   </Card.Footer>
                 </Card>
-              );
-            })}
-          </>
+              </Col>
+            );
+          })
         ) : (
-          <>
-            <h3>Blog Not Found...</h3>
-          </>
+          <h3>Blog Not Found...</h3>
         )}
-      </div>
+      </Row>
     </div>
   );
 };

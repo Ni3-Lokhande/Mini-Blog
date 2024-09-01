@@ -1,6 +1,6 @@
 
 import React, { useContext } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 import MyContext from '../context/data/MyContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -32,15 +32,15 @@ const BlogPostCard = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4 text-center">Latest Blog Posts</h1>
-      <div className="d-flex justify-content-between flex-wrap">
-        {latestBlogs.length > 0 ? (
-          latestBlogs.map((item, index) => {
-            const { image, createdAt, title, id } = item;
-            return (
-              <Card key={index} className="mb-4 shadow-sm blog-card" style={{ width: '32%' }}>
+    <h1 className="mb-4 text-center">Latest Blog Posts</h1>
+    <Row>
+      {latestBlogs.length > 0 ? (
+        latestBlogs.map((item, index) => {
+          const { image, createdAt, title, id } = item;
+          return (
+            <Col key={index} xs={12} sm={6} md={4} className="mb-4">
+              <Card className="shadow-sm blog-card" onClick={() => navigate(`/bloginfo/${id}`)}>
                 <Card.Img
-                  onClick={() => navigate(`/bloginfo/${id}`)}
                   variant="top"
                   src={image}
                   alt="Blog Post Image"
@@ -58,16 +58,17 @@ const BlogPostCard = () => {
                   </small>
                 </Card.Footer>
               </Card>
-            );
-          })
-        ) : (
-          <h5>No Blogs Found</h5>
-        )}
-      </div>
-      <div className='text-center mt-2'>
-        {/* <button type="button" className="btn btn-primary">See More</button> */}
-      </div>
+            </Col>
+          );
+        })
+      ) : (
+        <h5>No Blogs Found</h5>
+      )}
+    </Row>
+    <div className="text-center mt-2">
+      {/* <button type="button" className="btn btn-primary">See More</button> */}
     </div>
+  </div>
   );
 };
 
