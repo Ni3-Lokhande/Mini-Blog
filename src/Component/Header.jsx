@@ -32,7 +32,7 @@ function Header(args) {
   return (
     <div>
       <Navbar {...args} color='dark' dark expand='md' fixed='top' >
-        <NavbarBrand tag={ReactLink} to="/">Nitin</NavbarBrand>
+        <NavbarBrand tag={ReactLink} to="/">Knowledge</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
