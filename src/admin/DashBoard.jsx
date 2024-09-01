@@ -11,8 +11,6 @@ const DashBoard = () => {
   const context = useContext(MyContext);
   const { getAllBlog, deleteBlogs } = context;
 
-  console.log(getAllBlog);
-
   const logout = () => {
     localStorage.clear("admin");
     navigate("/");
@@ -20,107 +18,117 @@ const DashBoard = () => {
 
   return (
     <Container className="p-4">
-    {/* Profile Section */}
-    <Row className="justify-content-center mb-4">
-      <Col xs={12} md={8}>
-        <Card body className="d-flex flex-column flex-md-row align-items-center">
-          {/* Div 1: Profile Image */}
-          <div className="text-center mb-3 mb-md-0" style={{ flex: "1" }}>
-            <img
-              src="https://via.placeholder.com/100"
-              alt="Profile"
-              className="rounded-circle"
-              style={{ width: "100px", height: "100px" }}
-            />
-          </div>
+      {/* Profile Section */}
+      <Row className="justify-content-center mb-4">
+        <Col xs={12} md={8}>
+          <Card body className="d-flex flex-column align-items-center">
+            {/* Div 1: Profile Image */}
+            <div className="text-center mb-3" style={{ flex: "1" }}>
+              <img
+                src="nitin.jpg"
+                alt="Profile"
+                className="rounded-circle"
+                style={{ width: "100px", height: '100px', objectFit: 'Cover' }}
+              />
+            </div>
 
-          {/* Div 2: Profile Details */}
-          <div
-            style={{ flex: "2", textAlign: "left" }}
-            className="text-center text-md-left"
-          >
-            <h5>Nitin Lokhande</h5>
-            <p>Administrator</p>
-            <p>nitinlokhande1995@gmail.com</p>
-            <p>Total Blogs: 9</p>
-            <div className="d-flex justify-content-center justify-content-md-start flex-wrap">
-              <Link to="/createblog">
-                <Button color="primary" className="mt-2 mb-2 me-md-2">
+            {/* Div 2: Profile Details */}
+            <div
+              style={{ flex: "2", textAlign: "left" }}
+              className="text-center text-md-left mb-3"
+            >
+              <h5>Nitin Lokhande</h5>
+              <p>Administrator</p>
+              <p>nitinlokhande1995@gmail.com</p>
+              <p>Total Blogs: 9</p>
+            </div>
+
+            {/* Div 3: Buttons */}
+            <div className="d-flex justify-content-center flex-wrap w-100">
+              <Link to="/createblog" className="mb-2 me-2 w-100">
+                <Button color="primary" className="w-100">
                   <FaPlus /> Create Blog
                 </Button>
               </Link>
-              <Button color="danger" className="mt-2 mb-2" onClick={logout}>
+              <Button
+                color="danger"
+                className="mb-2 w-100"
+                onClick={logout}
+              >
                 <FaSignOutAlt /> Logout
               </Button>
             </div>
-          </div>
-        </Card>
-      </Col>
-    </Row>
+          </Card>
+        </Col>
+      </Row>
 
-    {/* Manage Blogs Table */}
-    <Row>
-      <Col xs={12}>
-        <Card body>
-          <Table responsive striped className="mt-3">
-            <thead>
-              <tr>
-                <th>S. No.</th>
-                <th>Thumbnail</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Date</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            {getAllBlog.length > 0 ? (
-              getAllBlog.map((item, index) => {
-                const { image, createdAt, title, category, id } = item;
-                return (
-                  <tbody key={index}>
-                    <tr>
-                      <td>{index + 1}</td>
-                      <td>
-                        <img
-                          src={image}
-                          alt="thumbnail"
-                          style={{ width: "50px", height: "50px", objectFit: 'cover' }}
-                        />
-                      </td>
-                      <td>{title}</td>
-                      <td>{category}</td>
-                      <td>
-                        {new Date(
-                          createdAt.seconds * 1000
-                        ).toLocaleDateString()}
-                      </td>
-                      <td>
-                        <Button
-                          color="danger"
-                          size="sm"
-                          onClick={() => deleteBlogs(id)}
-                        >
-                          <FaTrashAlt /> Delete
-                        </Button>
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })
-            ) : (
-              <tbody>
+      {/* Manage Blogs Table */}
+      <Row>
+        <Col xs={12}>
+          <Card body>
+            <Table responsive striped className="mt-3">
+              <thead>
                 <tr>
-                  <td colSpan="6" className="text-center">
-                    <h5>No Blogs Found</h5>
-                  </td>
+                  <th>S. No.</th>
+                  <th>Thumbnail</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Action</th>
                 </tr>
-              </tbody>
-            )}
-          </Table>
-        </Card>
-      </Col>
-    </Row>
-  </Container>
+              </thead>
+              {getAllBlog.length > 0 ? (
+                getAllBlog.map((item, index) => {
+                  const { image, createdAt, title, category, id } = item;
+                  return (
+                    <tbody key={index}>
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <img
+                            src={image}
+                            alt="thumbnail"
+                            style={{
+                              width: "50px",
+                              height: "50px",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </td>
+                        <td>{title}</td>
+                        <td>{category}</td>
+                        <td>
+                          {new Date(
+                            createdAt.seconds * 1000
+                          ).toLocaleDateString()}
+                        </td>
+                        <td>
+                          <Button
+                            color="danger"
+                            size="sm"
+                            onClick={() => deleteBlogs(id)}
+                          >
+                            <FaTrashAlt /> Delete
+                          </Button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  );
+                })
+              ) : (
+                <tbody>
+                  <tr>
+                    <td colSpan="6" className="text-center">
+                      <h5>No Blogs Found</h5>
+                    </td>
+                  </tr>
+                </tbody>
+              )}
+            </Table>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
