@@ -4,7 +4,7 @@ import React from 'react'
 const HeroSection = () => {
   return (
   <div>
-    <h2 className='text-center my-4 '>Here are Some blogs and tutorials Contributed by Knowledge Tour.</h2>
+    {/* <h2 className='text-center my-4 '></h2> */}
   </div>
   )
 }
