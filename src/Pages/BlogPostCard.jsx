@@ -29,62 +29,67 @@ const BlogPostCard = () => {
 
   return (
     <div className="container mt-5">
-      
       {/* Category Row */}
       <Row className="mb-4">
         <Col className="text-center">
-          <Button
-            variant="warning"
-            className="me-2"
-            onClick={() => setSelectedCategory("Sport")}
-          >
-            Sport
-          </Button>
-          <Button
-            variant="info"
-            className="me-2"
-            onClick={() => setSelectedCategory("Business")}
-          >
-            Business
-          </Button>
-          <Button
-            variant="primary"
-            className="me-2"
-            onClick={() => setSelectedCategory("Bollywood Hangama")}
-          >
-            Bollywood Hangama
-          </Button>
-          <Button
-            variant="success"
-            className="me-2"
-            onClick={() => setSelectedCategory("Health")}
-          >
-            Health
-          </Button>
-          <Button
-            variant="info"
-            className="me-2"
-            onClick={() => setSelectedCategory("Science & Tech")}
-          >
-            Science & Tech
-          </Button>
-          <Button
-            variant="warning"
-            className="me-2"
-            onClick={() => setSelectedCategory("Politics")}
-          >
-            Politics
-          </Button>
-          <Button
-            variant="primary"
-            className="me-2"
-            onClick={() => setSelectedCategory("Gov-Schemes")}
-          >
-            Gov-Schemes
-          </Button>
-          <Button variant="danger" onClick={() => setSelectedCategory("Crime")}>
-            Crime
-          </Button>
+          <div className="d-flex flex-wrap justify-content-center">
+            <Button
+              variant="warning"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Sport")}
+            >
+              Sport
+            </Button>
+            <Button
+              variant="info"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Business")}
+            >
+              Business
+            </Button>
+            <Button
+              variant="primary"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Bollywood Hangama")}
+            >
+              Bollywood Hangama
+            </Button>
+            <Button
+              variant="success"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Health")}
+            >
+              Health
+            </Button>
+            <Button
+              variant="info"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Science & Tech")}
+            >
+              Science & Tech
+            </Button>
+            <Button
+              variant="warning"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Politics")}
+            >
+              Politics
+            </Button>
+            <Button
+              variant="primary"
+              className="me-2 mb-2"
+              onClick={() => setSelectedCategory("Gov-Schemes")}
+            >
+              Gov-Schemes
+            </Button>
+            <Button
+              variant="danger"
+              className="mb-2"
+              onClick={() => setSelectedCategory("Crime")}
+            >
+              Crime
+            </Button>
+          </div>
         </Col>
       </Row>
 
@@ -122,9 +127,6 @@ const BlogPostCard = () => {
           <h5>No Blogs Found</h5>
         )}
       </Row>
-      <div className="text-center mt-2">
-        {/* <button type="button" className="btn btn-primary">See More</button> */}
-      </div>
     </div>
   );
 };
